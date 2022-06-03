@@ -6,7 +6,7 @@ import "./interfaces/IERC20.sol";
 import "./libraries/Math.sol";
 import "./libraries/SafeERC20.sol";
 
-//solhint-disable not-rely-on-time
+// solhint-disable not-rely-on-time
 contract MultiRewardsStake {
     using SafeERC20 for IERC20;
 
@@ -371,11 +371,11 @@ contract MultiRewardsStake {
             // Overwrite existing index with index + 1 record
             _rewardTokens[i] = rewardToken;
 
-            // Delete original
-            delete _rewardTokens[i + 1];
-
             // Set new index
             _rewardTokenToIndex[rewardToken.token] = i;
+
+            // Delete original
+            delete _rewardTokens[i + 1];
 
             unchecked { ++i; }
         }
